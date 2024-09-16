@@ -6,7 +6,7 @@
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://oyvindsung.github.io/blog"/>
     <subtitle>Øyvind Sung Blog</subtitle>
-    <icon>https://oyvindsung.github.io/img/profile.gif</icon>
+    <icon>https://oyvindsung.github.io/img/profile.jpg</icon>
     <entry>
         <title type="html"><![CDATA[关于我自己]]></title>
         <id>https://oyvindsung.github.io/blog/about/about_cn</id>
