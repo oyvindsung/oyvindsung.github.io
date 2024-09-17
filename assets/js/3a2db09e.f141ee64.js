@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkoyvindsung=self.webpackChunkoyvindsung||[]).push([[121],{8070:s=>{s.exports=JSON.parse('{"tags":[{"label":"about","permalink":"/blog/tags/about","count":4}]}')}}]);
