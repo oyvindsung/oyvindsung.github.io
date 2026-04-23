@@ -8,7 +8,7 @@ export const defaultConfig: ThemeConfig = {
     title: 'Øyvind Sung',
     subtitle: 'の Blogs',
     author: 'Moeyua',
-    description: 'Rediscory the beauty of typography',
+    description: '',
     website: 'https://astro-theme-typography.vercel.app/',
     pageSize: 5,
     socialLinks: [

@@ -21,14 +21,16 @@ const cssExtend = {
     content: 'none',
   },
 
+  // 代码片段样式
   ':where(:not(pre):not(a) > code)': {
     'white-space': 'normal',
     'word-wrap': 'break-word',
-    'padding': '2px 4px',
-    'color': '#c7254e',
+    'padding': '1px 4px',
+    'color': '#1c0d1a',
     'font-size': '90%',
-    'background-color': '#f9f2f4',
-    'border-radius': '4px',
+    'background-color': '#fffef8',
+    'border-radius': '2px',
+    'border': '1px solid #1c0d1a',
   },
 
   'li': {
@@ -61,14 +63,14 @@ export default defineConfig({
     presetTheme ({
       theme: {
         dark: {
-          colors: { ...colorsDark, shadow: '#FFFFFF0A' },
+          colors: { ...colorsDark, shadow: '#0000000a' },
           // TODO 需要配置代码块颜色
         },
       },
     }),
   ],
   theme: {
-    colors: { ...colorsLight, shadow: '#0000000A' },
+    colors: { ...colorsLight, shadow: '#0000000a' },
     fontFamily: fonts,
   },
   shortcuts: [
