@@ -55,11 +55,11 @@ export const defaultConfig: ThemeConfig = {
     ],
   },
   appearance: {
-    theme: 'system',
+    theme: 'light',
     locale: 'zh-cn',
     colorsLight: {
-      primary: '#2e405b',
-      background: '#ffffff',
+      primary: '#1c0d1a',
+      background: '#fffef8',
     },
     colorsDark: {
       primary: '#FFFFFF',
