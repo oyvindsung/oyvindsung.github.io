@@ -3,6 +3,8 @@ title: About
 pubDate: 2026-04-23
 ---
 
+Nothing to tell...
+
 <!-- ---
 title: About Me
 slug: about/about_en
@@ -18,12 +20,12 @@ English | [简体中文](./2023-06-30-about-cn.mdx) | [繁體中文](./2023-06-3
 
 <!-- ![](./img/about/code.png) -->
 
-Hola!
+<!-- Hola!
 
 ## Education Background
 
 <!-- - 2017 - 2020, High School, [Bozhou No.1 High School](http://www.bzyzh.com/), Bozhou Anhui -->
-
+<!--
 - 2020 - 2024, Bachelor’s Degree, [College of Computer Science and Technology](http://ccst.jlu.edu.cn), Jilin University, Changchun Jilin
 - 2024 - present, Master’s Student, [School of Computer Science](http://cse.sysu.edu.cn), Sun Yat-sen University, Guangzhou Guangdong
 
@@ -58,14 +60,14 @@ Hola!
 - Language learning. In my spare time, I enjoy studying various interesting languages such as French, Russian, and Spanish.
 - Drawing and illustration. I haven’t studied drawing systematically, I just draw whatever I feel like.
 - Reading literature. [Kafka](https://en.wikipedia.org/wiki/Franz_Kafka) and [Woolf](https://en.wikipedia.org/wiki/Virginia_Woolf) are among my favorite authors. Even though I don't always understand everything, it fascinates me even more.
-- Designing interesting things. I am passionate about creating extraordinary things from ordinary materials, and using color to express emotions.
+- Designing interesting things. I am passionate about creating extraordinary things from ordinary materials, and using color to express emotions. -->
 <!-- - Photography. I use my camera to capture every memorable moment. -->
 
-### Some creations :)
+<!-- ### Some creations :)
 
 This is the first drawing I did a few years ago.
 
-![](him.png)
+![](him.png) --> -->
 
 <!-- This is a flower from a cactus at my home.
 
