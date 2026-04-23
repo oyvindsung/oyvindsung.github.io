@@ -14,20 +14,20 @@ export const defaultConfig: ThemeConfig = {
     socialLinks: [
       {
         name: 'github',
-        href: 'https://github.com/moeyua/astro-theme-typography',
+        href: 'https://github.com/oyvindsung',
       },
-      {
-        name: 'rss',
-        href: '/atom.xml',
-      },
-      {
-        name: 'twitter',
-        href: 'https://github.com/moeyua/astro-theme-typography',
-      },
-      {
-        name: 'mastodon',
-        href: 'https://github.com/moeyua/astro-theme-typography',
-      },
+      // {
+      //   name: 'rss',
+      //   href: '/atom.xml',
+      // },
+      // {
+      //   name: 'twitter',
+      //   href: 'https://github.com/moeyua/astro-theme-typography',
+      // },
+      // {
+      //   name: 'mastodon',
+      //   href: 'https://github.com/moeyua/astro-theme-typography',
+      // },
     ],
     navLinks: [
       {
