@@ -11,7 +11,7 @@ import { themeConfig } from './src/.config'
 
 // https://astro.build/config
 export default defineConfig({
-  site: themeConfig.site.website,
+  site: 'https://oyvindsung.github.io',
   prefetch: true,
   base: '/',
   vite: {
@@ -48,5 +48,5 @@ export default defineConfig({
       updateHead: true,
       updateBodyClass: true,
     }),
-  ],
+  ]
 })
