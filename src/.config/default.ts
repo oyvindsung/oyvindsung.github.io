@@ -5,8 +5,8 @@ import type { ThemeConfig } from '~/types'
 
 export const defaultConfig: ThemeConfig = {
   site: {
-    title: '活版印字',
-    subtitle: 'Typography',
+    title: 'Øyvind Sung',
+    subtitle: 'の Blogs',
     author: 'Moeyua',
     description: 'Rediscory the beauty of typography',
     website: 'https://astro-theme-typography.vercel.app/',
@@ -72,7 +72,7 @@ export const defaultConfig: ThemeConfig = {
     },
   },
   seo: {
-    twitter: '@moeyua13',
+    twitter: '',
     meta: [],
     link: [],
   },
