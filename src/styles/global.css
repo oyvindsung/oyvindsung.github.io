@@ -6,7 +6,7 @@
 }
 @font-face {
   font-family: 'CMU Serif';
-  src: url('/fonts/cmu-serif-regular.woff2') format('woff2');
+  src: url('/fonts-woff2/cmu-serif-regular.woff2') format('woff2');
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -14,7 +14,7 @@
 
 @font-face {
   font-family: 'CMU Serif';
-  src: url('/fonts/cmu-serif-italic.woff2') format('woff2');
+  src: url('/fonts-woff2/cmu-serif-italic.woff2') format('woff2');
   font-style: italic;
   font-weight: 400;
   font-display: swap;
@@ -22,7 +22,7 @@
 
 @font-face {
   font-family: 'CMU Serif';
-  src: url('/fonts/cmu-serif-bold.woff2') format('woff2');
+  src: url('/fonts-woff2/cmu-serif-bold.woff2') format('woff2');
   font-style: normal;
   font-weight: 700;
   font-display: swap;
@@ -30,7 +30,7 @@
 
 @font-face {
   font-family: 'CMU Serif';
-  src: url('/fonts/cmu-serif-bold-italic.woff2') format('woff2');
+  src: url('/fonts-woff2/cmu-serif-bold-italic.woff2') format('woff2');
   font-style: italic;
   font-weight: 700;
   font-display: swap;
@@ -38,7 +38,7 @@
 
 @font-face {
   font-family: 'CMU Sans Serif';
-  src: url('/fonts/cmu-sans-regular.woff2') format('woff2');
+  src: url('/fonts-woff2/cmu-sans-regular.woff2') format('woff2');
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -46,7 +46,7 @@
 
 @font-face {
   font-family: 'CMU Sans Serif';
-  src: url('/fonts/cmu-sans-italic.woff2') format('woff2');
+  src: url('/fonts-woff2/cmu-sans-italic.woff2') format('woff2');
   font-style: italic;
   font-weight: 400;
   font-display: swap;
@@ -54,7 +54,7 @@
 
 @font-face {
   font-family: 'CMU Sans Serif';
-  src: url('/fonts/cmu-sans-bold.woff2') format('woff2');
+  src: url('/fonts-woff2/cmu-sans-bold.woff2') format('woff2');
   font-style: normal;
   font-weight: 700;
   font-display: swap;
@@ -62,7 +62,7 @@
 
 @font-face {
   font-family: 'CMU Sans Serif';
-  src: url('/fonts/cmu-sans-bold-italic.woff2') format('woff2');
+  src: url('/fonts-woff2/cmu-sans-bold-italic.woff2') format('woff2');
   font-style: italic;
   font-weight: 700;
   font-display: swap;
@@ -70,7 +70,7 @@
 
 @font-face {
   font-family: 'Latin Modern Roman';
-  src: url('/fonts/latin-modern-roman-regular.woff2') format('woff2');
+  src: url('/fonts-woff2/latin-modern-roman-regular.woff2') format('woff2');
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -78,7 +78,7 @@
 
 @font-face {
   font-family: 'Latin Modern Roman';
-  src: url('/fonts/latin-modern-roman-italic.woff2') format('woff2');
+  src: url('/fonts-woff2/latin-modern-roman-italic.woff2') format('woff2');
   font-style: italic;
   font-weight: 400;
   font-display: swap;
@@ -86,7 +86,7 @@
 
 @font-face {
   font-family: 'Latin Modern Roman';
-  src: url('/fonts/latin-modern-roman-bold.woff2') format('woff2');
+  src: url('/fonts-woff2/latin-modern-roman-bold.woff2') format('woff2');
   font-style: normal;
   font-weight: 700;
   font-display: swap;
@@ -94,7 +94,7 @@
 
 @font-face {
   font-family: 'Latin Modern Roman';
-  src: url('/fonts/latin-modern-roman-bold-italic.woff2') format('woff2');
+  src: url('/fonts-woff2/latin-modern-roman-bold-italic.woff2') format('woff2');
   font-style: italic;
   font-weight: 700;
   font-display: swap;
@@ -102,7 +102,7 @@
 
 @font-face {
   font-family: 'Latin Modern Sans';
-  src: url('/fonts/latin-modern-sans-regular.woff2') format('woff2');
+  src: url('/fonts-woff2/latin-modern-sans-regular.woff2') format('woff2');
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -110,7 +110,7 @@
 
 @font-face {
   font-family: 'Latin Modern Sans';
-  src: url('/fonts/latin-modern-sans-italic.woff2') format('woff2');
+  src: url('/fonts-woff2/latin-modern-sans-italic.woff2') format('woff2');
   font-style: italic;
   font-weight: 400;
   font-display: swap;
@@ -118,7 +118,7 @@
 
 @font-face {
   font-family: 'Latin Modern Sans';
-  src: url('/fonts/latin-modern-sans-bold.woff2') format('woff2');
+  src: url('/fonts-woff2/latin-modern-sans-bold.woff2') format('woff2');
   font-style: normal;
   font-weight: 700;
   font-display: swap;
@@ -126,7 +126,7 @@
 
 @font-face {
   font-family: 'Latin Modern Sans';
-  src: url('/fonts/latin-modern-sans-bold-italic.woff2') format('woff2');
+  src: url('/fonts-woff2/latin-modern-sans-bold-italic.woff2') format('woff2');
   font-style: italic;
   font-weight: 700;
   font-display: swap;
@@ -135,6 +135,7 @@
 .post-body {
   --at-apply: 'font-header';
 }
+
 html {
   --at-apply: antialiased;
   --at-apply: 'bg-background c-primary font-ui text-shadow-color-shadow';
