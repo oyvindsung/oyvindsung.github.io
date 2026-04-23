@@ -66,9 +66,8 @@ export const defaultConfig: ThemeConfig = {
       background: '#232222',
     },
     fonts: {
-      header:
-        '"HiraMinProN-W6","Source Han Serif CN","Source Han Serif SC","Source Han Serif TC",serif',
-      ui: '"Source Sans Pro","Roboto","Helvetica","Helvetica Neue","Source Han Sans SC","Source Han Sans TC","PingFang SC","PingFang HK","PingFang TC",sans-serif',
+      header: '"CMU Serif","Computer Modern Serif","Latin Modern Roman","Source Han Serif CN", serif',
+      ui: '"CMU Serif","Computer Modern Serif","Latin Modern", "Source Han Serif CN", serif',
     },
   },
   seo: {
