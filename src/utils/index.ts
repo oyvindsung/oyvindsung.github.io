@@ -44,6 +44,10 @@ export async function getPosts(isArchivePage = false) {
 
 const parser = new MarkdownIt()
 export function getPostDescription(post: Post) {
+  if (isPostProtected(post)) {
+    return post.data.description ?? '这篇文章需要口令访问。'
+  }
+
   if (post.data.description) {
     return post.data.description
   }
@@ -51,6 +55,10 @@ export function getPostDescription(post: Post) {
   const html = parser.render(post.body || '')
   const sanitized = sanitizeHtml(html, { allowedTags: [] })
   return sanitized.slice(0, 400)
+}
+
+export function isPostProtected(post: Post) {
+  return Boolean(post.data.protected)
 }
 
 export function formatDate(date: Date, format: string = 'YYYY-MM-DD') {

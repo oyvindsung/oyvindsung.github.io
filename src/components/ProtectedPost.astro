@@ -1,0 +1,132 @@
+---
+import { createCipheriv, pbkdf2Sync, randomBytes } from 'node:crypto'
+
+interface Props {
+  protected?: boolean
+}
+
+const { protected: isProtected } = Astro.props
+const content = await Astro.slots.render('default')
+
+const postPassword = '202766'
+const iterations = 200000
+let payload:
+  | {
+      salt: string
+      iv: string
+      ciphertext: string
+      iterations: number
+    }
+  | undefined
+
+function toBase64(buffer: Buffer) {
+  return buffer.toString('base64')
+}
+
+if (isProtected) {
+  const salt = randomBytes(16)
+  const iv = randomBytes(12)
+  const key = pbkdf2Sync(postPassword, salt, iterations, 32, 'sha256')
+  const cipher = createCipheriv('aes-256-gcm', key, iv)
+  const encrypted = Buffer.concat([cipher.update(content, 'utf8'), cipher.final()])
+  const authTag = cipher.getAuthTag()
+
+  payload = {
+    salt: toBase64(salt),
+    iv: toBase64(iv),
+    ciphertext: toBase64(Buffer.concat([encrypted, authTag])),
+    iterations,
+  }
+}
+---
+
+{
+  payload ? (
+    <section class="protected-post" data-protected-post data-payload={JSON.stringify(payload)}>
+      <form class="protected-post-form" data-protected-form>
+        <label class="protected-post-label" for="protected-post-password">
+          这篇文章受限访问。
+        </label>
+        <div class="protected-post-controls">
+          <input
+            id="protected-post-password"
+            class="protected-post-input"
+            name="password"
+            type="password"
+            inputmode="numeric"
+            pattern="[0-9]{6}"
+            maxlength="6"
+            autocomplete="off"
+            placeholder="请输入口令"
+            required
+          />
+          <button class="protected-post-button" type="submit">
+            查看
+          </button>
+        </div>
+        <p class="protected-post-error" data-protected-error hidden>
+          Ooops! 猜错了。
+        </p>
+      </form>
+      <div class="protected-post-content" data-protected-content />
+    </section>
+  ) : (
+    <Fragment set:html={content} />
+  )
+}
+
+<script>
+  const decoder = new TextDecoder()
+  const encoder = new TextEncoder()
+
+  function fromBase64(value: string) {
+    return Uint8Array.from(atob(value), (char) => char.charCodeAt(0))
+  }
+
+  async function deriveKey(password: string, salt: Uint8Array, iterations: number) {
+    const material = await crypto.subtle.importKey('raw', encoder.encode(password), 'PBKDF2', false, ['deriveKey'])
+
+    return crypto.subtle.deriveKey(
+      { name: 'PBKDF2', salt, iterations, hash: 'SHA-256' },
+      material,
+      { name: 'AES-GCM', length: 256 },
+      false,
+      ['decrypt'],
+    )
+  }
+
+  for (const section of Array.from(document.querySelectorAll('[data-protected-post]')) as HTMLElement[]) {
+    const form = section.querySelector('[data-protected-form]') as HTMLFormElement | null
+    const input = section.querySelector('[name="password"]') as HTMLInputElement | null
+    const error = section.querySelector('[data-protected-error]') as HTMLElement | null
+    const content = section.querySelector('[data-protected-content]') as HTMLElement | null
+    const payload = JSON.parse(section.dataset.payload ?? '{}')
+
+    form?.addEventListener('submit', async (event: SubmitEvent) => {
+      event.preventDefault()
+      const password = input?.value.trim() ?? ''
+      if (!/^\d{6}$/.test(password) || !content) {
+        return
+      }
+
+      const key = await deriveKey(password, fromBase64(payload.salt), payload.iterations)
+      const decrypted = await crypto.subtle
+        .decrypt({ name: 'AES-GCM', iv: fromBase64(payload.iv) }, key, fromBase64(payload.ciphertext))
+        .catch(() => null)
+
+      if (decrypted) {
+        content.innerHTML = decoder.decode(decrypted)
+        form.hidden = true
+        section.dispatchEvent(new CustomEvent('protected-post:unlocked', { bubbles: true }))
+        return
+      }
+
+      if (error) {
+        error.hidden = false
+      }
+      if (input) {
+        input.value = ''
+      }
+    })
+  }
+</script>

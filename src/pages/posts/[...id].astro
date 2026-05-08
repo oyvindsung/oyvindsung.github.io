@@ -2,6 +2,7 @@
 import type { GetStaticPaths, InferGetStaticPropsType } from 'astro'
 import Comments from '~/components/Comments.astro'
 import Pagination from '~/components/Pagination.astro'
+import ProtectedPost from '~/components/ProtectedPost.astro'
 import SiteSeo from '~/components/SiteSeo.astro'
 import LayoutDefault from '~/layouts/LayoutDefault.astro'
 import LayoutPost from '~/layouts/LayoutPost.astro'
@@ -37,7 +38,9 @@ function getUrl(id: string) {
 
   <LayoutPost post={entry}>
     <div class="post-body">
-      <Content />
+      <ProtectedPost protected={entry.data.protected}>
+        <Content />
+      </ProtectedPost>
     </div>
   </LayoutPost>
 
@@ -66,23 +69,32 @@ function getUrl(id: string) {
     }, 1500)
   })
 
-  const codeBlocks = Array.from(document.querySelectorAll('pre'))
-  const icon = "<div class='i-mdi-content-copy icon text-white'></div>"
-  for (const codeBlock of codeBlocks) {
-    const wrapper = document.createElement('div')
-    wrapper.className = 'code-container'
+  function setupCodeCopy(root: ParentNode = document) {
+    const codeBlocks = Array.from(root.querySelectorAll('pre'))
+    const icon = "<div class='i-mdi-content-copy icon text-white'></div>"
+    for (const codeBlock of codeBlocks) {
+      if (codeBlock.closest('.code-container')) {
+        continue
+      }
 
-    const copyButton = document.createElement('clipboard-copy')
-    const code = codeBlock.querySelector('code')
-    copyButton.value = code?.textContent ?? ''
-    copyButton.className = 'clipboard-copy'
-    copyButton.innerHTML = icon
+      const wrapper = document.createElement('div')
+      wrapper.className = 'code-container'
 
-    codeBlock.appendChild(copyButton)
+      const copyButton = document.createElement('clipboard-copy')
+      const code = codeBlock.querySelector('code')
+      copyButton.value = code?.textContent ?? ''
+      copyButton.className = 'clipboard-copy'
+      copyButton.innerHTML = icon
 
-    codeBlock.parentNode?.insertBefore(wrapper, codeBlock)
-    wrapper.appendChild(codeBlock)
+      codeBlock.appendChild(copyButton)
+
+      codeBlock.parentNode?.insertBefore(wrapper, codeBlock)
+      wrapper.appendChild(codeBlock)
+    }
   }
+
+  setupCodeCopy()
+  document.addEventListener('protected-post:unlocked', (event) => setupCodeCopy(event.target as ParentNode))
 </script>
 
 <style is:global>
@@ -103,5 +115,54 @@ function getUrl(id: string) {
 
   .clipboard-copy:hover {
     background-color: #30363d;
+  }
+
+  .protected-post {
+    margin-block: 2rem;
+  }
+
+  .protected-post-form {
+    max-width: 24rem;
+    padding: 1rem 0;
+  }
+
+  .protected-post-label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+  }
+
+  .protected-post-controls {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .protected-post-input,
+  .protected-post-button {
+    min-height: 2.5rem;
+    border: 1px solid currentColor;
+    border-radius: 0.25rem;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+  }
+
+  .protected-post-input {
+    width: 10rem;
+    padding: 0 0.75rem;
+  }
+
+  .protected-post-button {
+    padding: 0 1rem;
+    cursor: pointer;
+  }
+
+  .protected-post-button:hover {
+    background: var(--uno-colors-primary);
+    color: var(--uno-colors-background);
+  }
+
+  .protected-post-error {
+    margin-top: 0.75rem;
   }
 </style>

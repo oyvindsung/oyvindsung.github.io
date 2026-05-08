@@ -4,7 +4,7 @@ import rss from '@astrojs/rss'
 import MarkdownIt from 'markdown-it'
 import sanitizeHtml from 'sanitize-html'
 import { themeConfig } from '~/.config'
-import { getPosts } from '~/utils'
+import { getPosts, isPostProtected } from '~/utils'
 
 const parser = new MarkdownIt()
 const { title, description, website, author } = themeConfig.site
@@ -48,6 +48,9 @@ function getPostItem(post: Post) {
 }
 
 function getPostContent(post: Post) {
+  if (isPostProtected(post))
+    return post.data.description ?? '这篇文章需要口令访问。'
+
   const isFullText = themeConfig.rss.fullText
   if (!isFullText)
     return post.data.description
