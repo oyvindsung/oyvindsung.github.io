@@ -3,15 +3,28 @@ import { themeConfig } from '~/.config'
 
 const { latex } = themeConfig
 
-const katex = latex.katex
+const mathjax = latex.mathjax
+const mathJaxConfig = `window.MathJax = ${JSON.stringify({
+  tex: {
+    inlineMath: [
+      ['$', '$'],
+      ['\\(', '\\)'],
+    ],
+    displayMath: [
+      ['$$', '$$'],
+      ['\\[', '\\]'],
+    ],
+    processEscapes: true,
+    tags: 'ams',
+  },
+})}`
 ---
 
 {
-  katex && (
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"
-      crossorigin="anonymous"
-    />
+  mathjax && (
+    <>
+      <script is:inline set:html={mathJaxConfig} />
+      <script is:inline async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" />
+    </>
   )
 }

@@ -86,6 +86,6 @@ export const defaultConfig: ThemeConfig = {
     umamiAnalyticsId: '',
   },
   latex: {
-    katex: false,
+    mathjax: true,
   },
 }

@@ -117,6 +117,7 @@ if (isProtected) {
       if (decrypted) {
         content.innerHTML = decoder.decode(decrypted)
         form.hidden = true
+        await window.MathJax?.typesetPromise?.([content])
         section.dispatchEvent(new CustomEvent('protected-post:unlocked', { bubbles: true }))
         return
       }

@@ -3,11 +3,9 @@ import sitemap from '@astrojs/sitemap'
 import swup from '@swup/astro'
 import robotsTxt from 'astro-robots-txt'
 import { defineConfig } from 'astro/config'
-import rehypeKatex from 'rehype-katex'
-import remarkMath from 'remark-math'
 import UnoCSS from 'unocss/astro'
 import devtoolsJson from 'vite-plugin-devtools-json'
-import { themeConfig } from './src/.config'
+import { remarkCitations } from './src/plugins/remarkCitations'
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,10 +21,7 @@ export default defineConfig({
   },
   markdown: {
     remarkPlugins: [
-      remarkMath,
-    ],
-    rehypePlugins: [
-      rehypeKatex,
+      remarkCitations,
     ],
     shikiConfig: {
       theme: 'dracula',
@@ -48,5 +43,5 @@ export default defineConfig({
       updateHead: true,
       updateBodyClass: true,
     }),
-  ]
+  ],
 })

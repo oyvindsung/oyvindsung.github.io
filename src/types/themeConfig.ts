@@ -72,7 +72,7 @@ export interface ConfigAnalytics {
 }
 
 export interface ConfigLaTeX {
-  katex: boolean
+  mathjax: boolean
 }
 
 interface Colors {

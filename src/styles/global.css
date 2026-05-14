@@ -153,3 +153,44 @@ html {
   --at-apply: 'ease-in-out duration-300ms';
   --at-apply: 'hover:(c-background bg-primary decoration-primary)';
 }
+
+.citation-ref {
+  position: relative;
+  font-size: 0.75em;
+  line-height: 0;
+}
+
+.citation-ref a {
+  text-decoration: none;
+}
+
+.citation-first-ref {
+  display: none;
+}
+
+.references {
+  margin-top: 3.5rem;
+  padding-top: 0.75rem;
+}
+
+.references hr {
+  margin: 0 0 1.25rem;
+  border: 0;
+  border-top: 1px solid currentColor;
+}
+
+.references-list {
+  display: grid;
+  gap: 0.55rem;
+  font-size: 0.95em;
+  line-height: 1.55;
+}
+
+.reference-item {
+  padding-left: 2.25rem;
+  text-indent: -2.25rem;
+}
+
+.reference-backref {
+  text-decoration: none;
+}
