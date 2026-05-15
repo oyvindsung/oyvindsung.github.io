@@ -5,7 +5,9 @@ import robotsTxt from 'astro-robots-txt'
 import { defineConfig } from 'astro/config'
 import UnoCSS from 'unocss/astro'
 import devtoolsJson from 'vite-plugin-devtools-json'
+import { remarkCaptions } from './src/plugins/remarkCaptions'
 import { remarkCitations } from './src/plugins/remarkCitations'
+import { remarkMathDelimiters } from './src/plugins/remarkMathDelimiters'
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,6 +23,8 @@ export default defineConfig({
   },
   markdown: {
     remarkPlugins: [
+      remarkMathDelimiters,
+      remarkCaptions,
       remarkCitations,
     ],
     shikiConfig: {

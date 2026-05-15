@@ -49,6 +49,70 @@ const dark = themeConfig.appearance.theme === 'dark'
         document.documentElement.classList.remove('animation-prepared')
         document.removeEventListener('animationend', removeAnimation, false)
       }
+
+      const appWindow = window as Window & { __hashScrollReady?: boolean }
+
+      if (!appWindow.__hashScrollReady) {
+        appWindow.__hashScrollReady = true
+        const highlightTimers = new WeakMap<HTMLElement, number>()
+
+        document.addEventListener('click', (event) => {
+          const link = (event.target as Element | null)?.closest('a[href^="#"]')
+          if (!(link instanceof HTMLAnchorElement) || !link.hash) {
+            return
+          }
+
+          const target = getHashTarget(link.hash)
+          if (!target) {
+            return
+          }
+
+          event.preventDefault()
+          history.pushState(null, '', link.hash)
+          scrollToHashTarget(target)
+        })
+
+        window.addEventListener('hashchange', () => {
+          const target = getHashTarget(window.location.hash)
+          if (target) {
+            scrollToHashTarget(target)
+          }
+        })
+
+        function getHashTarget(hash: string) {
+          const id = decodeURIComponent(hash.slice(1))
+          if (!id) {
+            return null
+          }
+
+          return document.getElementById(id)
+        }
+
+        function scrollToHashTarget(target: HTMLElement) {
+          window.requestAnimationFrame(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' })
+            target.tabIndex = -1
+            target.focus({ preventScroll: true })
+            highlightTarget(target)
+          })
+        }
+
+        function highlightTarget(target: HTMLElement) {
+          const timer = highlightTimers.get(target)
+          if (timer) {
+            window.clearTimeout(timer)
+          }
+
+          target.classList.add('hash-target-highlight')
+          highlightTimers.set(
+            target,
+            window.setTimeout(() => {
+              target.classList.remove('hash-target-highlight')
+              highlightTimers.delete(target)
+            }, 3000),
+          )
+        }
+      }
     </script>
     <style>
       /* 页面首次加载动画 */

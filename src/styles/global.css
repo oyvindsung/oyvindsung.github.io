@@ -194,3 +194,67 @@ html {
 .reference-backref {
   text-decoration: none;
 }
+
+.captioned-figure {
+  margin: 2rem 0;
+}
+
+.captioned-figure > p {
+  margin: 0;
+}
+
+.captioned-figure img {
+  display: block;
+  margin: 0 auto;
+}
+
+.captioned-figure figcaption {
+  margin-top: 0.65rem;
+  color: inherit;
+  font-size: 0.86em;
+  font-weight: inherit;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.figure-ref {
+  text-decoration: none;
+}
+
+.hash-target-highlight {
+  color: var(--uno-colors-background);
+  background-color: var(--uno-colors-primary);
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    text-shadow 180ms ease;
+  text-shadow: none;
+}
+
+.hash-target-highlight a {
+  color: inherit;
+  text-decoration-color: currentColor;
+}
+
+.post-body mjx-container[display='true'] {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.35rem 0 0.55rem;
+  scrollbar-width: thin;
+}
+
+.post-body mjx-container[display='true'] mjx-math {
+  min-width: max-content;
+}
+
+.post-body mjx-container[display='true'] mjx-mtd {
+  min-width: max-content;
+}
+
+.post-body mjx-container[display='true'] mjx-labels,
+.post-body mjx-container[display='true'] mjx-label {
+  margin-left: auto;
+  text-align: right;
+}

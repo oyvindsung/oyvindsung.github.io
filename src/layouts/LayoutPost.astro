@@ -1,7 +1,7 @@
 ---
 import PostMeta from '~/components/PostMeta.astro'
 import type { Post } from '~/types'
-const { post } = Astro.props
+const { post } = Astro.props as { post: Post }
 ---
 
 <article class="prose">
